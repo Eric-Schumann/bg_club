@@ -1,0 +1,68 @@
+### INSTALLED PACKAGES ###
+bcrypt==3.1.4 #Installed Directly as flask-bcrypt
+cffi==1.11.5
+Click==7.0
+dominate==2.3.5
+Flask==1.0.2 #Installed Directly
+Flask-Admin==1.5.2 #Installed Directly
+Flask-Bcrypt==0.7.1 #Installed Directly
+Flask-Bootstrap==3.3.7.1 #Installed Directly
+Flask-Login==0.4.1 #Installed Directly
+Flask-SQLAlchemy==2.3.2 #Installed Directly
+Flask-WTF==0.14.2 #Installed Directly
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.0 
+psycopg2==2.7.6.1 #Required if using postgresql
+psycopg2-binary==2.7.6.1 #Required if using postgresql
+pycparser==2.19
+six==1.11.0
+SQLAlchemy==1.2.14
+visitor==0.1.3
+Werkzeug==0.14.1
+WTForms==2.2.1
+
+### INSTRUCTIONS ###
+#Anything not marked as Installed Directly was installed as a result of installing the marked packages directly.
+#After intsalling the necessary packages, follow these steps:
+
+#1. Create a folder called config in the project root.  It must be named config.
+#2. Inside the new config folder, create a file called dev.py.  It must be in the config folder.
+#3. Inside the dev.py file, you will need the following items.
+#4. SQLAlchemy supports many types of databases, therefore this application can run using the SQL Database of 
+#   your choice.
+
+# DEBUG=True                                                                    
+# SECRET_KEY='dev'
+# SQLALCHEMY_DATABASE_URI='your sql connection string'
+# SQLALCHEMY_TRACK_MODIFICATIONS=False
+
+#In the app.__init__.py file, when the application is created, it takes a string in the create_app function.  
+#This argument is the name of the config file that it will reference.  For development, the argument will be called 'dev'
+#This will build a path to config/dev.py for the application to reference its config variables. 
+#Once the app goes to production, we will create a prod.py file and put it in config.  
+#Then we will pass 'prod' as an argument to the create_app function in app.__init__.py
+
+### Base Project Structure ###
+#.
+#|---_app/
+#|   |___auth/
+#|   |  |__templates
+#|   |  |__/__init__.py
+#|   |  |__forms.py
+#|   |  |__models.py
+#|   |  |__routes.py
+#|   |
+#|   |__templates/
+#|   |__/__init__.py
+#|   |__helpers.py
+#|    
+#|---_config/
+#|   |__dev.py
+#|   |__prod.py
+#|
+#|---_venv/  --It is highly recommended that you work within a python virtual environment to avoid versioning conflicts
+#|           --with globally installed packages.  Having a venv will install the required packages to the 
+#|           --venv directory
+#|   
+#|--run.py
