@@ -5,20 +5,23 @@ from flask_bootstrap import Bootstrap
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 from app.helpers import MyHomeView
 
 #Instantiate Extension Objects
 db = SQLAlchemy()
 bootstrap = Bootstrap()
 admin = Admin(index_view=MyHomeView())
-bcrypt = Bcrypt()
+app_bcrypt = Bcrypt()
+login_manager = LoginManager()
 
 #Initialize extensions that take app.
 def initialize_extensions(app):
     db.init_app(app)
     bootstrap.init_app(app)
     admin.init_app(app)
-    bcrypt.init_app(app)
+    app_bcrypt.init_app(app)
+    login_manager.init_app(app)
 
 #Register Python packages / Flask blueprints.
 def register_blueprints(app):
