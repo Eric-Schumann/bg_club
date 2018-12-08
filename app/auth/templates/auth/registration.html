@@ -3,14 +3,16 @@
 {% from 'macros/_render_errors.html' import render_errors %}
 
 {% block content %}
-
     <h1 class="text-center">Login Page</h1>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form action="/" method="POST">
+            <form action="/registration" method="POST">
                 {{ form.csrf_token }}
+                {{ render_fields(form.first_name) }}
+                {{ render_fields(form.last_name) }}
                 {{ render_fields(form.email) }}
                 {{ render_fields(form.password) }}
+                {{ render_fields(form.confirm_password) }}
                 <div class="form-group">
                     {{ form.submit(class_='btn btn-default') }}
                 </div>
@@ -20,19 +22,14 @@
             {{ render_errors(form.errors.items()) }}
             {% endif %}
 
-            {% with messages = get_flashed_messages(with_categories=True) %}
+            {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                    {% for category, message in messages %}
-                        {% if category == 'error' %}
-                            <div class="alert alert-danger text-center">{{ message }}</div>
-                        {% else %}
-                            <div class="alert alert-success text-center">{{ message }}</div>
-                        {% endif %}
+                    {% for message in messages %}
+                    <div class="alert alert-danger">{{ message }}</div>
                     {% endfor %}
                 {% endif %}
             {% endwith %}
 
         </div>
     </div>
-
 {% endblock content %}
