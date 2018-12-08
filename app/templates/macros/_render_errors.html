@@ -1,0 +1,9 @@
+{% macro render_errors(items) %}
+    {% for field, errors in items %}
+        {% for error in errors %}
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endmacro %}
