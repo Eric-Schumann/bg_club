@@ -15,12 +15,12 @@ class User(UserMixin, db.Model):
     user_is_admin = db.Column(db.Boolean, default=False)
 
     @classmethod
-    def create_user(cls, first_name, last_name, email, password):
+    def create_user(cls, first_name, last_name, email):
         user = cls(
             user_first_name = first_name,
             user_last_name = last_name,
             user_email = email,
-            user_password = generate_password_hash(password).decode('utf-8')
+            user_password = generate_password_hash('password01').decode('utf-8')
         )
 
         db.session.add(user)

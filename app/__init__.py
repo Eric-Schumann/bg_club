@@ -27,6 +27,8 @@ def initialize_extensions(app):
 def register_blueprints(app):
     from app.auth import authentication as at
     app.register_blueprint(at)
+    from app.bins import bins
+    app.register_blueprint(bins)
 
 #Pass models that are accessible through /admin route.
 def model_to_admin():

@@ -1,9 +1,10 @@
 {% extends '_layout.html' %}
 {% from 'macros/_render_fields.html' import render_fields %}
 {% from 'macros/_render_errors.html' import render_errors %}
+{% from 'macros/_render_flashes.html' import render_flashes %}
 
 {% block content %}
-    <h1 class="text-center">Login Page</h1>
+    <h1 class="text-center">Register A New User</h1>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <form action="/registration" method="POST">
@@ -11,8 +12,6 @@
                 {{ render_fields(form.first_name) }}
                 {{ render_fields(form.last_name) }}
                 {{ render_fields(form.email) }}
-                {{ render_fields(form.password) }}
-                {{ render_fields(form.confirm_password) }}
                 <div class="form-group">
                     {{ form.submit(class_='btn btn-default') }}
                 </div>
@@ -22,13 +21,7 @@
             {{ render_errors(form.errors.items()) }}
             {% endif %}
 
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert alert-danger">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+            {{ render_flashes() }}
 
         </div>
     </div>
